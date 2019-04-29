@@ -11,7 +11,7 @@ The tragedy of NodeJS is that it's a world of high performance design patterns i
 single-thread interpreted language. The idea of this experiment is to see if a version of the
 async design patterns from NodeJS can be implemented in OpenCL.
 
-A Vega64 GPU has 64 entirely autonamous "cores", each core has 4 "sub-cores" which are able to
+A Vega64 GPU has 64 entirely autonomous "cores", each core has 4 "sub-cores" which are able to
 carry out independent execution but share some hardware such as the branch handler. Each sub-core
 has 16 SIMD lanes so it is capable of performing one operation (add, subtract, etc) on 16 pieces
 of data simultaneously. So if you're doing completely different things with nothing in common, a
@@ -118,7 +118,7 @@ clang-6.0 -I. -x cl -cl-std=CL2.0 -Xclang -finclude-default-header -c -o /dev/nu
 
 ## Things necessary to make this useful
 
-* [] Self-contained OpenCL (compiles to a binary which runs on computers without OpenCL installed)
+* [ ] Self-contained OpenCL (compiles to a binary which runs on computers without OpenCL installed)
   * Ideal case is to have a "fat binary" which runs as this one does if it detects an appropriate
   OpenCL implementation, but otherwise falls back to running in host side code.
   * Probably best to use clang to compile the kernels and the pocl kernel support library to
@@ -129,44 +129,44 @@ clang-6.0 -I. -x cl -cl-std=CL2.0 -Xclang -finclude-default-header -c -o /dev/nu
     2. pocl lacks [device-side enqueue](https://github.com/pocl/pocl/issues/715)
     3. pocl strips debugging info during optimization passes
   * To achieve partial usage of pocl, we need:
-    * [] Extract the pthread runtime into it's own project
-    * [] Implement `enqueue_kernel` and `create_user_event`
-    * [] Migrate init.c to use this backend when none other is available
+    * [ ] Extract the pthread runtime into it's own project
+    * [ ] Implement `enqueue_kernel` and `create_user_event`
+    * [ ] Migrate init.c to use this backend when none other is available
 * Memory
-  * [] Full malloc implementation
-  * [] [Allocator.c](https://github.com/cjdelisle/cjdns/blob/master/memory/Allocator.c)
-  * [] Garbage collector (?)
+  * [ ] Full malloc implementation
+  * [ ] [Allocator.c](https://github.com/cjdelisle/cjdns/blob/master/memory/Allocator.c)
+  * [ ] Garbage collector (?)
 * Events
-  * [] Events carrying arbitrary payload
-  * [] Multiple events per cycle
-  * [] Cancelling events (e.g. `clearTimeout()`)
-* [] Define a concurrency story
+  * [ ] Events carrying arbitrary payload
+  * [ ] Multiple events per cycle
+  * [ ] Cancelling events (e.g. `clearTimeout()`)
+* [ ] Define a concurrency story
   * `withLock(lock, ^{ inner code... })` ?
   * Re-create objects and switch atomics pointers ?
-* [] Strings
-  * [] implement basic functions: slice, substr, concat w/ shared memory
-  * [] port grep/egrep code to opencl
-  * [] implement grep-based indexOf, lastIndexOf, equals
-  * [] implement egrep-based regex test, replace
-* [] Lists
-  * [] automatic re-allocation
-  * [] push/pop/shift/unshift
-  * [] indexOf
-* [] Maps
-  * [] dynamic re-allocation
+* [ ] Strings
+  * [ ] implement basic functions: slice, substr, concat w/ shared memory
+  * [ ] port grep/egrep code to opencl
+  * [ ] implement grep-based indexOf, lastIndexOf, equals
+  * [ ] implement egrep-based regex test, replace
+* [ ] Lists
+  * [ ] automatic re-allocation
+  * [ ] push/pop/shift/unshift
+  * [ ] indexOf
+* [ ] Maps
+  * [ ] dynamic re-allocation
 * System APIs
-  * [] UDP
-    * [] sendto
-    * [] bind
-    * [] ondata
-  * [] TCP
-    * [] listen
-    * [] accept
-    * [] ondata
-  * [] getaddrinfo
-  * [] signal
-  * [] fs
-  * [] gettimeofday
-* [] HTTP parser
-* [] Demo HTTP server
-* [] Package manager
+  * [ ] UDP
+    * [ ] sendto
+    * [ ] bind
+    * [ ] ondata
+  * [ ] TCP
+    * [ ] listen
+    * [ ] accept
+    * [ ] ondata
+  * [ ] getaddrinfo
+  * [ ] signal
+  * [ ] fs
+  * [ ] gettimeofday
+* [ ] HTTP parser
+* [ ] Demo HTTP server
+* [ ] Package manager
