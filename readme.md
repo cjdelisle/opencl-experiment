@@ -1,5 +1,7 @@
 # OpenCL Experiment
 
+Status: experiment/unmaintained
+
 This is an experiment to see if asynchronous programming can be implemented in OpenCL.
 
 The idea is that entire programs could be written on-device with only generic support code
