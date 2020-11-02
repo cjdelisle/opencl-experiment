@@ -1,6 +1,6 @@
 # OpenCL Experiment
 
-Status: experiment/unmaintained
+Status: experiment/unmaintained - contact me @cjd on mastodon.social if you'd like to takeover the project
 
 This is an experiment to see if asynchronous programming can be implemented in OpenCL.
 
